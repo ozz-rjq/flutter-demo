@@ -70,6 +70,31 @@ class _HomePageState extends State<HomePage> {
     Navigator.pushNamed(context, '/about');
   }
 
+  _showLogoutWarning(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Are you sure?'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('DISCARD'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              FlatButton(
+                child: Text('CONTINUE'),
+                onPressed: () {
+                  Navigator.pop(context);
+                  _navigateToAuthPage();
+                },
+              )
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -112,7 +137,9 @@ class _HomePageState extends State<HomePage> {
                 new Container(
                     padding: EdgeInsets.only(top: 32.0),
                     child: RaisedButton(
-                      onPressed: _navigateToAuthPage,
+                      onPressed: () {
+                        _showLogoutWarning(context);
+                      },
                       child: Text('Log out'),
                       color: Colors.redAccent,
                       textColor: Colors.white,
