@@ -64,7 +64,6 @@ class MyProfilePage extends StatelessWidget {
         _status,
         style: TextStyle(
           fontFamily: 'Spectral',
-          color: Colors.black,
           fontSize: 20.0,
           fontWeight: FontWeight.w300,
         ),
