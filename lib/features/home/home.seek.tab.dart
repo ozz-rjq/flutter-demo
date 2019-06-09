@@ -81,7 +81,7 @@ class _HomeSeekTabState extends State<HomeSeekTab> {
           activeColor: Colors.green,
           controlAffinity: ListTileControlAffinity.trailing,
           title: new Text('Man'),
-          subtitle: new Text('Make your choise'),
+          subtitle: new Text('Make your choice!'),
         ),
         RadioListTile(
           value: 'F',
@@ -90,7 +90,7 @@ class _HomeSeekTabState extends State<HomeSeekTab> {
           activeColor: Colors.green,
           controlAffinity: ListTileControlAffinity.trailing,
           title: new Text('Woman'),
-          subtitle: new Text('Make your choise'),
+          subtitle: new Text('Make your choice!'),
         ),
         _buildSubmit()
       ],

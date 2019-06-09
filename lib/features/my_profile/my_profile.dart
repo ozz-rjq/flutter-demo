@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
 
-class MyProfilePage extends StatelessWidget {
+class MyProfilePage extends StatefulWidget {
+  MyProfilePage({Key key}) : super(key: key);
+
+  _MyProfilePageState createState() => _MyProfilePageState();
+}
+
+class _MyProfilePageState extends State<MyProfilePage> {
   final String _fullName = "Tester";
   final String _status = "Software Developer";
   final String _bio = "Info about me";
   final String _followers = "173";
   final String _posts = "24";
   final String _scores = "450";
+
+  List<BottomNavigationBarItem> _bottomNavbarItems;
+  String _bottomNavbarValue = '';
+  int _bottomNavbarIndex = 0;
+
+  final GlobalKey<ScaffoldState> _scaffoldstate =
+      new GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    _bottomNavbarItems = new List();
+    _bottomNavbarItems.add(new BottomNavigationBarItem(
+        icon: new Icon(Icons.info_outline), title: new Text('General')));
+    _bottomNavbarItems.add(new BottomNavigationBarItem(
+        icon: new Icon(Icons.card_giftcard), title: new Text('Presents')));
+  }
 
   Widget _buildCoverImage(Size screenSize) {
     return Container(
@@ -238,6 +260,12 @@ class MyProfilePage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: new BottomNavigationBar(
+        items: _bottomNavbarItems,
+        fixedColor: Colors.blue,
+        currentIndex: _bottomNavbarIndex,
+        onTap: (int item) {},
       ),
     );
   }
