@@ -90,7 +90,7 @@ class _HomeSeekTabState extends State<HomeSeekTab> {
           activeColor: Colors.green,
           controlAffinity: ListTileControlAffinity.trailing,
           title: new Text('Woman'),
-          subtitle: new Text('Make your choice!'),
+          subtitle: new Text('Dozens women from various places!'),
         ),
         _buildSubmit()
       ],
