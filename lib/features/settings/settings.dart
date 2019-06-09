@@ -5,8 +5,10 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('settings'),
-    );
+    return Scaffold(
+        appBar: AppBar(title: Text('Settings')),
+        body: Center(
+          child: Text('settings page'),
+        ));
   }
 }

@@ -1,3 +1,8 @@
+import 'package:dating_demo/features/about/about.dart';
+import 'package:dating_demo/features/inbox/inbox.dart';
+import 'package:dating_demo/features/my_profile/my_profile.dart';
+import 'package:dating_demo/features/search/search.dart';
+import 'package:dating_demo/features/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 
@@ -39,6 +44,41 @@ class _HomePageState extends State<HomePage> {
                 AuthPage(title: 'Authorization')));
   }
 
+  void _navigateToMyProfilePage() {
+    Navigator.pop(context);
+
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => MyProfilePage()));
+  }
+
+  void _navigateToInboxPage() {
+    Navigator.pop(context);
+
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => InboxPage()));
+  }
+
+  void _navigateToSearchPage() {
+    Navigator.pop(context);
+
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => SearchPage()));
+  }
+
+  void _navigateToSettingsPage() {
+    Navigator.pop(context);
+
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => SettingsPage()));
+  }
+
+  void _navigateToAboutPage() {
+    Navigator.pop(context);
+
+    Navigator.push(context,
+        MaterialPageRoute(builder: (BuildContext context) => AboutPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -61,23 +101,23 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                     leading: Icon(Icons.person),
                     title: Text('My Profile'),
-                    onTap: () {}),
+                    onTap: _navigateToMyProfilePage),
                 ListTile(
                     leading: Icon(Icons.inbox),
                     title: Text('Inbox'),
-                    onTap: () {}),
+                    onTap: _navigateToInboxPage),
                 ListTile(
                     leading: Icon(Icons.search),
                     title: Text('Search'),
-                    onTap: () {}),
+                    onTap: _navigateToSearchPage),
                 ListTile(
                     leading: Icon(Icons.settings),
                     title: Text('Settings'),
-                    onTap: () {}),
+                    onTap: _navigateToSettingsPage),
                 ListTile(
                     leading: Icon(Icons.info),
                     title: Text('About'),
-                    onTap: () {}),
+                    onTap: _navigateToAboutPage),
                 new Container(
                     padding: EdgeInsets.only(top: 32.0),
                     child: RaisedButton(

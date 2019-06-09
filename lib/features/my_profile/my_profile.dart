@@ -5,8 +5,10 @@ class MyProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('my profile'),
-    );
+    return Scaffold(
+        appBar: AppBar(title: Text('My Profile')),
+        body: Center(
+          child: Text('my profile page'),
+        ));
   }
 }

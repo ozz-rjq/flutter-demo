@@ -5,8 +5,10 @@ class InboxPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('inbox'),
-    );
+    return Scaffold(
+        appBar: AppBar(title: Text('Inbox')),
+        body: Center(
+          child: Text('inbox page'),
+        ));
   }
 }
