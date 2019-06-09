@@ -16,7 +16,7 @@ final List<Map<String, String>> people = [
     'friends': '123',
     'posts': '11',
     'scores': '123',
-    'photo': 'assets/images/people/Woman_1'
+    'photo': 'assets/images/people/Woman_1.png'
   },
   {
     'fullname': 'Peter Parker',
@@ -28,7 +28,7 @@ final List<Map<String, String>> people = [
     'friends': '121',
     'posts': '43',
     'scores': '22',
-    'photo': 'assets/images/people/Man_1'
+    'photo': 'assets/images/people/Man_1.png'
   },
   {
     'fullname': 'Lana King',
@@ -40,7 +40,7 @@ final List<Map<String, String>> people = [
     'friends': '65',
     'posts': '5',
     'scores': '10',
-    'photo': 'assets/images/people/Woman_2'
+    'photo': 'assets/images/people/Woman_2.png'
   },
   {
     'fullname': 'Samuel Bloom',
@@ -52,7 +52,7 @@ final List<Map<String, String>> people = [
     'friends': '121',
     'posts': '43',
     'scores': '22',
-    'photo': 'assets/images/people/Man_2'
+    'photo': 'assets/images/people/Man_2.png'
   },
   {
     'fullname': 'Jessica Alaba',
@@ -64,7 +64,7 @@ final List<Map<String, String>> people = [
     'friends': '3',
     'posts': '17',
     'scores': '83',
-    'photo': 'assets/images/people/Woman_3'
+    'photo': 'assets/images/people/Woman_3.png'
   },
   {
     'fullname': 'Vasyl Koval',
@@ -76,7 +76,7 @@ final List<Map<String, String>> people = [
     'friends': '98',
     'posts': '4',
     'scores': '9',
-    'photo': 'assets/images/people/Man_3'
+    'photo': 'assets/images/people/Man_3.png'
   },
   {
     'fullname': 'Daniella Vasquez',
@@ -88,7 +88,7 @@ final List<Map<String, String>> people = [
     'friends': '243',
     'posts': '662',
     'scores': '976',
-    'photo': 'assets/images/people/Woman_4'
+    'photo': 'assets/images/people/Woman_4.png'
   },
   {
     'fullname': 'Leo Gomez',
@@ -100,6 +100,6 @@ final List<Map<String, String>> people = [
     'friends': '121',
     'posts': '43',
     'scores': '22',
-    'photo': 'assets/images/people/Man_4'
+    'photo': 'assets/images/people/Man_4.png'
   },
 ];

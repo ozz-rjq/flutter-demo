@@ -26,12 +26,33 @@ class _PeoplePageState extends State<PeoplePage> {
     _filterPeople();
   }
 
+  Widget _buildLeading(item) {
+    return CircleAvatar(
+      backgroundImage: AssetImage(item['photo']),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('People')),
-        body: Center(
-          child: Text('gender ${widget.gender}'),
+        endDrawer: Drawer(
+          child: Column(
+            children: <Widget>[Text('Filter')],
+          ),
+        ),
+        body: ListView(
+          children: <Widget>[
+            for (var item in _people)
+              ListTile(
+                leading: _buildLeading(item),
+                trailing: Text('${item['age']} y.o.'),
+                title: Text('${item['fullname']}'),
+                onTap: () {},
+                isThreeLine: true,
+                subtitle: Text('${item['country']}'),
+              ),
+          ],
         ));
   }
 }

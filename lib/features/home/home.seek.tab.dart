@@ -1,13 +1,13 @@
 import 'package:dating_demo/features/people/people.dart';
 import 'package:flutter/material.dart';
 
-class HomeSeekForTab extends StatefulWidget {
-  HomeSeekForTab({Key key}) : super(key: key);
+class HomeSeekTab extends StatefulWidget {
+  HomeSeekTab({Key key}) : super(key: key);
 
-  _HomeSeekForTabState createState() => _HomeSeekForTabState();
+  _HomeSeekTabState createState() => _HomeSeekTabState();
 }
 
-class _HomeSeekForTabState extends State<HomeSeekForTab> {
+class _HomeSeekTabState extends State<HomeSeekTab> {
   String _radioValue = '';
 
   void _setRadioValue(String value) => setState(() => _radioValue = value);
@@ -70,7 +70,7 @@ class _HomeSeekForTabState extends State<HomeSeekForTab> {
     return ListView(
       children: [
         Container(
-            child: Text('Who are you seeking for?',
+            child: Text('I seek ...',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600)),
             padding: EdgeInsets.all(24.0)),

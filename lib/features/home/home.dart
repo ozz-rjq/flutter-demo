@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 
 import './home.my_news.tab.dart';
-import './home.seek_for.tab.dart';
+import './home.seek.tab.dart';
 
 import './../../static_data/news.dart' as staticData;
 
@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                 Switch(value: _isDarkMode, onChanged: _changeBrightness)
               ],
               bottom: TabBar(
-                tabs: <Widget>[Tab(text: 'My News'), Tab(text: 'Seek for ...')],
+                tabs: <Widget>[Tab(text: 'My News'), Tab(text: 'Seek ...')],
               )),
           drawer: Drawer(
             child: ListView(
@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
           body: TabBarView(
             children: <Widget>[
               HomeMyNewsTab(data: _news, removeNews: _removeNews),
-              HomeSeekForTab()
+              HomeSeekTab()
             ],
           ),
         ));
