@@ -23,15 +23,46 @@ class _HomeSeekForTabState extends State<HomeSeekForTab> {
         padding: EdgeInsets.all(16.0),
         child: Text('CONTINUE'),
         onPressed: () {
-          Navigator.push<bool>(context,
-              MaterialPageRoute(builder: (BuildContext context) {
-            return PeoplePage(gender: _radioValue);
-          }));
+          _showModal();
         },
       );
     }
 
     return result;
+  }
+
+  void _showModal() {
+    showModalBottomSheet<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return new Container(
+            padding: new EdgeInsets.all(15.0),
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Now Go Ahead and find your Love!',
+                    style: new TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                new RaisedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+
+                    Navigator.push<bool>(context,
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return PeoplePage(gender: _radioValue);
+                    }));
+                  },
+                  child: new Text('OK!'),
+                )
+              ],
+            ),
+          );
+        });
   }
 
   @override

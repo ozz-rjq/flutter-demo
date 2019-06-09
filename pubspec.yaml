@@ -46,6 +46,14 @@ flutter:
     - assets/images/news4.jpg
     - assets/images/cover.jpg
     - assets/images/my-profile-logo.png
+    - assets/images/people/Man_1.png
+    - assets/images/people/Man_2.png
+    - assets/images/people/Man_3.png
+    - assets/images/people/Man_4.png
+    - assets/images/people/Woman_1.png
+    - assets/images/people/Woman_2.png
+    - assets/images/people/Woman_3.png
+    - assets/images/people/Woman_4.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
@@ -55,10 +63,18 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Exo
+      fonts:
+        - asset: assets/fonts/Exo-Regular.ttf
+        - asset: assets/fonts/Exo-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Exo-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Exo-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Exo-Italic.ttf
+          style: italic
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

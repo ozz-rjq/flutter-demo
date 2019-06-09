@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
     return DynamicTheme(
         defaultBrightness: Brightness.light,
         data: (brightness) => ThemeData(
-              primarySwatch: Colors.indigo,
-              brightness: brightness,
-            ),
+            primarySwatch: Colors.indigo,
+            brightness: brightness,
+            fontFamily: 'Exo'),
         themedWidgetBuilder: (context, theme) {
           return MaterialApp(
               title: 'Dating Demo',
