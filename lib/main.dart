@@ -3,6 +3,8 @@ import 'package:dynamic_theme/dynamic_theme.dart';
 
 import './features/auth/auth.dart';
 
+import './routes.dart' as routeConfig;
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -16,10 +18,10 @@ class MyApp extends StatelessWidget {
             ),
         themedWidgetBuilder: (context, theme) {
           return MaterialApp(
-            title: 'Dating Demo',
-            theme: theme,
-            home: AuthPage(title: 'Authorization'),
-          );
+              title: 'Dating Demo',
+              theme: theme,
+              home: AuthPage(title: 'Authorization'),
+              routes: routeConfig.routes);
         });
   }
 }

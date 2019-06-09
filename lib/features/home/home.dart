@@ -37,46 +37,37 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _navigateToAuthPage() {
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) =>
-                AuthPage(title: 'Authorization')));
+    Navigator.pushReplacementNamed(context, '/auth');
   }
 
   void _navigateToMyProfilePage() {
     Navigator.pop(context);
 
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => MyProfilePage()));
+    Navigator.pushNamed(context, '/my-profile');
   }
 
   void _navigateToInboxPage() {
     Navigator.pop(context);
 
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => InboxPage()));
+    Navigator.pushNamed(context, '/inbox');
   }
 
   void _navigateToSearchPage() {
     Navigator.pop(context);
 
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => SearchPage()));
+    Navigator.pushNamed(context, '/search');
   }
 
   void _navigateToSettingsPage() {
     Navigator.pop(context);
 
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => SettingsPage()));
+    Navigator.pushNamed(context, '/settings');
   }
 
   void _navigateToAboutPage() {
     Navigator.pop(context);
 
-    Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) => AboutPage()));
+    Navigator.pushNamed(context, '/about');
   }
 
   @override

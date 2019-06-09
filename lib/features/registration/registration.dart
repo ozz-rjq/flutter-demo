@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import './../auth/auth.dart';
 
 class RegistrationPage extends StatefulWidget {
-  RegistrationPage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  RegistrationPage({Key key}) : super(key: key);
 
   @override
   _RegistrationPageState createState() => _RegistrationPageState();
@@ -24,11 +22,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   TextEditingController _userPassword = TextEditingController();
 
   void _navigateToAuthPage() {
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) =>
-                AuthPage(title: 'Authorization')));
+    Navigator.pushReplacementNamed(context, '/auth');
   }
 
   @override

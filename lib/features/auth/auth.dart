@@ -34,18 +34,11 @@ class _AuthPageState extends State<AuthPage> {
   }
 
   void _navigateToHomePage() {
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) => HomePage(title: 'Dating Demo')));
+    Navigator.pushReplacementNamed(context, '/home');
   }
 
   void _navigateToRegistrationPage() {
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) =>
-                RegistrationPage(title: 'Dating Demo')));
+    Navigator.pushReplacementNamed(context, '/registration');
   }
 
   void _onEmailChange(value) {
