@@ -1,15 +1,8 @@
-import 'package:dating_demo/features/about/about.dart';
-import 'package:dating_demo/features/inbox/inbox.dart';
-import 'package:dating_demo/features/my_profile/my_profile.dart';
-import 'package:dating_demo/features/search/search.dart';
-import 'package:dating_demo/features/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 
-import './../auth/auth.dart';
-
-import './home.my_news.dart';
-import './home.seek_for.dart';
+import './home.my_news.tab.dart';
+import './home.seek_for.tab.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -23,7 +16,29 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool _isDarkMode = false;
 
-  final List<int> data = [1, 2, 3, 4];
+  final List<Map<String, String>> _news = [
+    {
+      'title': 'Some news title here',
+      'description': 'News description goes here ...',
+      'image_url': 'https://picsum.photos/100'
+    },
+    {
+      'title': 'Here goes very long title for application',
+      'description':
+          'Very long description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'image_url': 'https://picsum.photos/100'
+    },
+    {
+      'title': 'Title 3',
+      'description': 'Lorem ipsum',
+      'image_url': 'https://picsum.photos/100'
+    },
+    {
+      'title': 'Last title',
+      'description': 'Last news',
+      'image_url': 'https://picsum.photos/100'
+    }
+  ];
 
   void _changeBrightness(bool value) {
     setState(() {
@@ -95,6 +110,13 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
+  _removeNews(Map<String, String> item) {
+    setState(() {
+      int itemIndex = _news.indexOf(item);
+      _news.removeAt(itemIndex);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -149,12 +171,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           body: TabBarView(
-            children: <Widget>[HomeMyNewsTab(data: data), HomeSeekForTab()],
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {},
-            tooltip: 'Increment',
-            child: Icon(Icons.add),
+            children: <Widget>[
+              HomeMyNewsTab(data: _news, removeNews: _removeNews),
+              HomeSeekForTab()
+            ],
           ),
         ));
   }
