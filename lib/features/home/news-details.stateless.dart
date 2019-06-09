@@ -5,6 +5,17 @@ class NewsDetails extends StatelessWidget {
 
   const NewsDetails({Key key, this.item}) : super(key: key);
 
+  Widget _buildImage() {
+    return Container(
+      child: Image.asset(
+        item['image_url'],
+        scale: 1.0,
+        height: 220,
+      ),
+      padding: EdgeInsets.all(16.0),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -31,11 +42,7 @@ class NewsDetails extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.all(8.0),
-                  child: Image.network(
-                    item['image_url'],
-                    scale: 0.5,
-                    height: 210,
-                  ),
+                  child: _buildImage(),
                 ),
                 Container(
                   padding: EdgeInsets.only(left: 32.0),

@@ -9,6 +9,16 @@ class News extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget _buildImage() {
+      return Container(
+        child: Image.asset(
+          item['image_url'],
+          scale: 2.0,
+        ),
+        padding: EdgeInsets.all(12.0),
+      );
+    }
+
     return Container(
         padding: EdgeInsets.all(6.0),
         child: Card(
@@ -16,9 +26,7 @@ class News extends StatelessWidget {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Container(
-                      child: Image.network(item['image_url']),
-                      padding: EdgeInsets.only(right: 12.0)),
+                  _buildImage(),
                   Expanded(
                     child: Column(
                       children: <Widget>[
@@ -28,7 +36,7 @@ class News extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 20.0),
                           ),
-                          padding: EdgeInsets.all(4.0),
+                          padding: EdgeInsets.all(8.0),
                         ),
                         Text(
                             '${item['description'].length > 100 ? item['description'].substring(0, 99) + '...' : item['description']}'),
