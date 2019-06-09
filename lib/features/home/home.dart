@@ -3,6 +3,9 @@ import 'package:dynamic_theme/dynamic_theme.dart';
 
 import './../auth/auth.dart';
 
+import './home.my_news.dart';
+import './home.seek_for.dart';
+
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
 
@@ -15,7 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool _isDarkMode = false;
 
-  final List<int> myArr = [1, 2, 3, 4];
+  final List<int> data = [1, 2, 3, 4];
 
   void _changeBrightness(bool value) {
     setState(() {
@@ -38,53 +41,63 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        actions: <Widget>[
-          Switch(value: _isDarkMode, onChanged: _changeBrightness)
-        ],
-      ),
-      drawer: Drawer(
-        child: Container(
-          padding: EdgeInsets.only(top: 128.0),
-          child: Column(
-            children: <Widget>[
-              Text('Navigation'),
-              RaisedButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('Close it!'),
-              ),
-              RaisedButton(
-                onPressed: _navigateToAuthPage,
-                child: Text('Log out'),
-                color: Colors.redAccent,
-                textColor: Colors.white,
-                textTheme: ButtonTextTheme.accent,
-              )
-            ],
+    return DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+              title: Text(widget.title),
+              actions: <Widget>[
+                Switch(value: _isDarkMode, onChanged: _changeBrightness)
+              ],
+              bottom: TabBar(
+                tabs: <Widget>[Tab(text: 'My News'), Tab(text: 'Seek for ...')],
+              )),
+          drawer: Drawer(
+            child: ListView(
+              children: <Widget>[
+                AppBar(
+                    automaticallyImplyLeading: false,
+                    title: Text('Dating Demo')),
+                ListTile(
+                    leading: Icon(Icons.person),
+                    title: Text('My Profile'),
+                    onTap: () {}),
+                ListTile(
+                    leading: Icon(Icons.inbox),
+                    title: Text('Inbox'),
+                    onTap: () {}),
+                ListTile(
+                    leading: Icon(Icons.search),
+                    title: Text('Search'),
+                    onTap: () {}),
+                ListTile(
+                    leading: Icon(Icons.settings),
+                    title: Text('Settings'),
+                    onTap: () {}),
+                ListTile(
+                    leading: Icon(Icons.info),
+                    title: Text('About'),
+                    onTap: () {}),
+                new Container(
+                    padding: EdgeInsets.only(top: 32.0),
+                    child: RaisedButton(
+                      onPressed: _navigateToAuthPage,
+                      child: Text('Log out'),
+                      color: Colors.redAccent,
+                      textColor: Colors.white,
+                      textTheme: ButtonTextTheme.accent,
+                    ))
+              ],
+            ),
           ),
-        ),
-      ),
-      body: Container(
-          padding: EdgeInsets.all(16.0),
-          child: ListView(
-            children: <Widget>[
-              for (var item in myArr)
-                Container(
-                    padding: EdgeInsets.all(6.0),
-                    child: Text(
-                      'Please, sign up $item',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 22.0),
-                    )),
-            ],
-          )),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
-    );
+          body: TabBarView(
+            children: <Widget>[HomeMyNewsTab(data: data), HomeSeekForTab()],
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {},
+            tooltip: 'Increment',
+            child: Icon(Icons.add),
+          ),
+        ));
   }
 }
