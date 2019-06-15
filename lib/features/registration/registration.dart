@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './../auth/auth.dart';
+import './../../static_data/countries.dart' as countriesData;
 
 class RegistrationPage extends StatefulWidget {
   RegistrationPage({Key key}) : super(key: key);
@@ -10,19 +10,100 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
-  // text fields for registration
-  TextEditingController _userFirstName = TextEditingController(
-    text: 'Hint',
-  );
-  TextEditingController _userLastName = TextEditingController();
-  TextEditingController _userEmail = TextEditingController();
-  TextEditingController _userCountry = TextEditingController();
-  TextEditingController _userBirthday = TextEditingController();
-  TextEditingController _userGender = TextEditingController();
-  TextEditingController _userPassword = TextEditingController();
+  // some text fields for registration
+  String _userBirthday = '';
+  DateTime _selectedBirthday;
+
+  String _userCountry;
+  List<String> _countriesList = countriesData.countries;
+  List<DropdownMenuItem<String>> _countriesDropdown = [];
+
+  bool _acceptTerms = false;
+
+  @override
+  void initState() {
+    _countriesDropdown = getDropDownMenuItems();
+    super.initState();
+  }
+
+  void _acceptTermsChanged(bool value) => setState(() => _acceptTerms = value);
 
   void _navigateToAuthPage() {
     Navigator.pushReplacementNamed(context, '/auth');
+  }
+
+  List<DropdownMenuItem<String>> getDropDownMenuItems() {
+    List<DropdownMenuItem<String>> items = List();
+    for (var country in _countriesList) {
+      items.add(DropdownMenuItem(
+          value: country,
+          child: Row(
+            children: <Widget>[Text(country)],
+          )));
+    }
+    return items.toList();
+  }
+
+  void _setUserCountry(country) {
+    setState(() {
+      _userCountry = country;
+    });
+  }
+
+  Future _selectDate() async {
+    DateTime initial;
+
+    if (_selectedBirthday != null) {
+      initial = _selectedBirthday;
+    } else {
+      initial = DateTime(2000);
+    }
+
+    DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: initial,
+        firstDate: DateTime(1960),
+        lastDate: DateTime(2002));
+
+    _selectedBirthday = picked;
+
+    if (picked != null)
+      setState(() => _userBirthday = _formatDate(picked.toString()));
+  }
+
+  String _formatDate(String date) {
+    String dateYear = date.substring(0, 4);
+    String dateMonth = date.substring(5, 7);
+    String dateDay = date.substring(8, 10);
+
+    return '$dateDay/$dateMonth/$dateYear';
+  }
+
+  bool _isSubmitDisabled() {
+    if (_acceptTerms) {
+      return false;
+    }
+
+    return true;
+  }
+
+  void _navigateToHomePage() {
+    Navigator.pushReplacementNamed(context, '/home');
+  }
+
+  Widget _buildSubmitButton() {
+    return Row(
+      children: <Widget>[
+        Expanded(
+            child: RaisedButton(
+                child: Text('SUBMIT',
+                    style: TextStyle(
+                      color: Colors.white,
+                    )),
+                onPressed: _isSubmitDisabled() ? null : _navigateToHomePage,
+                color: Colors.green))
+      ],
+    );
   }
 
   @override
@@ -33,14 +114,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
           child: ListView(
             children: <Widget>[
               Container(
+                  width: double.infinity,
                   padding: EdgeInsets.all(6.0),
                   child: AppBar(
                     automaticallyImplyLeading: false,
                     title: Text(
                       'Registration',
-                      style: TextStyle(color: Colors.blueAccent),
+                      style: TextStyle(color: Colors.black),
                     ),
-                    backgroundColor: Colors.white54,
+                    backgroundColor: Colors.white70,
                     iconTheme: IconThemeData(color: Colors.blue),
                   )),
               Row(
@@ -77,22 +159,34 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
               Row(
                 children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(right: 8.0),
+                    child: Icon(Icons.place, color: Colors.grey),
+                  ),
                   Expanded(
-                    child: TextField(
-                        decoration: InputDecoration(
-                            labelText: 'Country', icon: Icon(Icons.place)),
-                        keyboardType: TextInputType.text),
-                  )
+                      child: DropdownButton(
+                    hint: Text('Select your country'),
+                    value: _userCountry,
+                    items: _countriesDropdown,
+                    onChanged: _setUserCountry,
+                  )),
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                        decoration: InputDecoration(
-                            labelText: 'Birthday',
-                            icon: Icon(Icons.settings_system_daydream)),
-                        keyboardType: TextInputType.datetime),
+                  Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: RaisedButton(
+                      onPressed: _selectDate,
+                      child: Text('Birthday'),
+                    ),
+                  ),
+                  Text(
+                    _userBirthday != ''
+                        ? _userBirthday
+                        : 'Nothing selected yet!',
+                    style: TextStyle(fontStyle: FontStyle.italic),
                   )
                 ],
               ),
@@ -108,12 +202,31 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   )
                 ],
               ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: SwitchListTile(
+                      value: _acceptTerms,
+                      onChanged: _acceptTermsChanged,
+                      title: Text(
+                        'Accept Terms',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              _buildSubmitButton()
             ],
           )),
       endDrawer: Drawer(
         child: RaisedButton(
-          child: Text('Back To login'),
+          child: Text('Back To login'.toUpperCase(),
+              style: TextStyle(color: Colors.white)),
           onPressed: _navigateToAuthPage,
+          color: Colors.blueGrey,
         ),
       ),
     );

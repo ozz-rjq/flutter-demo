@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './../registration/registration.dart';
-import './../home/home.dart';
-
 class AuthPage extends StatefulWidget {
   AuthPage({Key key, this.title}) : super(key: key);
 
@@ -21,6 +18,38 @@ class _AuthPageState extends State<AuthPage> {
     _email = '';
     _pass = '';
     _isSubmitDisabled = true;
+
+    super.initState();
+  }
+
+  Widget _buildEmail() {
+    return Row(
+      children: <Widget>[
+        Expanded(
+          child: TextField(
+              decoration:
+                  InputDecoration(labelText: 'Email', icon: Icon(Icons.email)),
+              onChanged: _onEmailChange,
+              keyboardType: TextInputType.emailAddress),
+        )
+      ],
+    );
+  }
+
+  Widget _buildPassword() {
+    return Row(
+      children: <Widget>[
+        Expanded(
+          child: TextField(
+            decoration: InputDecoration(
+                labelText: 'Password', icon: Icon(Icons.security)),
+            onChanged: _onPassChange,
+            keyboardType: TextInputType.text,
+            obscureText: true,
+          ),
+        )
+      ],
+    );
   }
 
   Widget _buildSubmitButton() {
@@ -75,32 +104,10 @@ class _AuthPageState extends State<AuthPage> {
         padding: EdgeInsets.all(16.0),
         child: Container(
             padding: EdgeInsets.only(top: 32.0),
-            child: Column(
+            child: ListView(
               children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: TextField(
-                          decoration: InputDecoration(
-                              labelText: 'Email', icon: Icon(Icons.email)),
-                          onChanged: _onEmailChange,
-                          keyboardType: TextInputType.emailAddress),
-                    )
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                            labelText: 'Password', icon: Icon(Icons.security)),
-                        onChanged: _onPassChange,
-                        keyboardType: TextInputType.text,
-                        obscureText: true,
-                      ),
-                    )
-                  ],
-                ),
+                _buildEmail(),
+                _buildPassword(),
                 Container(
                   padding: EdgeInsets.all(32.0),
                   child: _buildSubmitButton(),

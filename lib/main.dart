@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 
-import './features/auth/auth.dart';
-
 import './routes.dart' as routeConfig;
+import './features/welcome/welcome.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,12 +14,12 @@ class MyApp extends StatelessWidget {
         data: (brightness) => ThemeData(
             primarySwatch: Colors.indigo,
             brightness: brightness,
-            fontFamily: 'Exo'),
+            fontFamily: 'Roboto'),
         themedWidgetBuilder: (context, theme) {
           return MaterialApp(
               title: 'Dating Demo',
               theme: theme,
-              home: AuthPage(title: 'Authorization'),
+              home: WelcomePage(),
               routes: routeConfig.routes);
         });
   }

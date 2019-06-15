@@ -16,6 +16,21 @@ class NewsDetails extends StatelessWidget {
     );
   }
 
+  Widget _buildTitle(context) {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.all(8.0),
+      child: Text(
+        item['title'],
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontSize: 26.0,
+            fontWeight: FontWeight.w700,
+            color: Theme.of(context).accentColor),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -28,18 +43,7 @@ class NewsDetails extends StatelessWidget {
           body: Container(
             child: ListView(
               children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    item['title'],
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 26.0,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.blue),
-                  ),
-                ),
+                _buildTitle(context),
                 Container(
                   padding: EdgeInsets.all(8.0),
                   child: _buildImage(),

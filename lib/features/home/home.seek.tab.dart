@@ -1,5 +1,6 @@
-import 'package:dating_demo/features/people/people.dart';
 import 'package:flutter/material.dart';
+
+import './../search/search.dart';
 
 class HomeSeekTab extends StatefulWidget {
   HomeSeekTab({Key key}) : super(key: key);
@@ -54,7 +55,7 @@ class _HomeSeekTabState extends State<HomeSeekTab> {
 
                     Navigator.push<bool>(context,
                         MaterialPageRoute(builder: (BuildContext context) {
-                      return PeoplePage(gender: _radioValue);
+                      return SearchPage(gender: _radioValue);
                     }));
                   },
                   child: new Text('OK!'),
@@ -90,7 +91,7 @@ class _HomeSeekTabState extends State<HomeSeekTab> {
           activeColor: Colors.green,
           controlAffinity: ListTileControlAffinity.trailing,
           title: new Text('Woman'),
-          subtitle: new Text('Dozens women from various places!'),
+          subtitle: new Text('Dozens of women from various places!'),
         ),
         _buildSubmit()
       ],

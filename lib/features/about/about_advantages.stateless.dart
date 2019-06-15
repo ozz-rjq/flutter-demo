@@ -10,6 +10,7 @@ class AboutAdvantages extends StatelessWidget {
         Container(
             child: Center(
                 child: Text('Popular Community for Singles:',
+                textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 24.0))),
             padding: EdgeInsets.only(bottom: 16.0)),
         Center(
